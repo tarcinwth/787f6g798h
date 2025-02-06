@@ -200,7 +200,6 @@ function App() {
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
               />
-              <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center text-[#7901FA]"></div>
             </div>
             <div className="flex flex-col justify-center">
               <div className="space-y-6">
