@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MobileMenu } from "./MobileMenu";
 import { useTheme } from "../contexts/ThemeContext";
 import { useScroll } from "../hooks/useScroll";
-import { COLORS, ANIMATIONS } from "../config/theme";
+import { ANIMATIONS } from "../config/theme";
 import type { NavItem } from "../types";
 
 export function Header() {
@@ -34,11 +34,22 @@ export function Header() {
             href="#"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`text-2xl font-bold ${
-              isScrolled ? "text-[#7901FA] dark:text-[#9B4DFF]" : "text-white"
-            }`}
+            className="flex items-center gap-2"
           >
-            Posto Catitú
+            <img
+              src="/images/logo.png"
+              alt="Logo Posto Catitú"
+              className="w-8 h-8"
+            />
+            <span
+              className={`text-2xl font-bold ${
+                isScrolled
+                  ? "text-primary-light dark:text-primary-dark"
+                  : "text-white"
+              }`}
+            >
+              Posto Catitú
+            </span>
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -50,12 +61,12 @@ export function Header() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`font-medium hover:text-[#FA4534] transition-colors relative group ${
+                className={`font-medium hover:text-primary-light dark:hover:text-primary-dark transition-colors relative group ${
                   isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
                 }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FA4534] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-light dark:bg-primary-dark transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
 

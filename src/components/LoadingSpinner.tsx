@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { COLORS } from "../config/theme";
 
 export function LoadingSpinner() {
   return (
@@ -12,7 +11,7 @@ export function LoadingSpinner() {
       >
         <div className="relative w-16 h-16">
           <motion.div
-            className={`absolute inset-0 border-4 border-[${COLORS.secondary.light}] dark:border-[${COLORS.secondary.dark}] rounded-full`}
+            className="absolute inset-0 border-4 border-secondary-light dark:border-secondary-dark rounded-full"
             animate={{
               rotate: 360,
               scale: [1, 1.1, 1],
@@ -24,7 +23,7 @@ export function LoadingSpinner() {
             }}
           />
           <motion.div
-            className={`absolute inset-0 border-4 border-[${COLORS.primary.light}] dark:border-[${COLORS.primary.dark}] rounded-full`}
+            className="absolute inset-0 border-4 border-primary-light dark:border-primary-dark rounded-full"
             animate={{
               rotate: -360,
               scale: [1, 0.9, 1],

@@ -3,14 +3,36 @@ import { COLORS } from "./src/config/theme";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
+  safelist: [
+    "text-primary-light",
+    "text-primary-dark",
+    "text-secondary-light",
+    "text-secondary-dark",
+    "text-accent-light",
+    "text-accent-dark",
+    "text-tertiary-light",
+    "text-tertiary-dark",
+    // Adicione outras classes que são geradas dinamicamente
+  ],
   theme: {
     extend: {
       colors: {
-        primary: COLORS.primary,
-        secondary: COLORS.secondary,
-        accent: COLORS.accent,
-        tertiary: COLORS.tertiary,
+        primary: {
+          light: "#7901FA",
+          dark: "#9B4DFF",
+        },
+        secondary: {
+          light: "#FA4534",
+          dark: "#FF6B5C",
+        },
+        accent: {
+          light: "#FAB432",
+          dark: "#FFD27A",
+        },
+        tertiary: {
+          light: "#34FAB4",
+          dark: "#5CFFC6",
+        },
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",

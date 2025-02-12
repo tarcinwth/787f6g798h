@@ -41,16 +41,12 @@ export function ServicesSection() {
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
               >
                 <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:rotate-6">
-                  <service.Icon
-                    className={`w-8 h-8 text-${service.color}-light dark:text-${service.color}-dark`}
-                  />
+                  <service.Icon className={`w-8 h-8 text-${service.color}-light dark:text-${service.color}-dark`} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {service.desc}
-                </p>
+                <p className="text-gray-600 dark:text-gray-300">{service.desc}</p>
               </motion.div>
             ))}
           </div>

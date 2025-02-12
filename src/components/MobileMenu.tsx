@@ -15,7 +15,7 @@ export function MobileMenu({ navItems, isScrolled, onClose }: MobileMenuProps) {
       exit={{ opacity: 0, y: -20 }}
       className={`md:hidden ${
         isScrolled
-          ? "bg-white dark:bg-gray-900"
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm"
           : "bg-black/90 backdrop-blur-lg"
       }`}
     >
@@ -37,7 +37,7 @@ export function MobileMenu({ navItems, isScrolled, onClose }: MobileMenuProps) {
               >
                 <span className="relative">
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FA4534] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-light dark:bg-primary-dark transition-all duration-300 group-hover:w-full" />
                 </span>
               </a>
             </motion.li>

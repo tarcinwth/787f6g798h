@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import { Fuel, Droplet, Car, Clock } from "lucide-react";
-import { COLORS, ANIMATIONS } from "../config/theme";
-import type { PriceItem } from "../types";
+import { ANIMATIONS } from "../config/theme";
 
 export function PricesSection() {
   const { ref, isInView } = useInView();
@@ -19,36 +18,28 @@ export function PricesSection() {
     }).format(date);
   };
 
-  const prices: PriceItem[] = [
+  const prices = [
     {
       icon: (
-        <Fuel
-          className={`w-6 h-6 text-[${COLORS.secondary.light}] dark:text-[${COLORS.secondary.dark}]`}
-        />
+        <Fuel className="w-6 h-6 text-secondary-light dark:text-secondary-dark" />
       ),
       name: "Gasolina",
       price: "R$ 5,89",
-      bgColor: `bg-[${COLORS.secondary.light}]/10 dark:bg-[${COLORS.secondary.light}]/5`,
+      bgColor: "bg-secondary-light/10 dark:bg-secondary-light/5",
     },
     {
       icon: (
-        <Droplet
-          className={`w-6 h-6 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`}
-        />
+        <Droplet className="w-6 h-6 text-primary-light dark:text-primary-dark" />
       ),
       name: "Etanol",
       price: "R$ 3,89",
-      bgColor: `bg-[${COLORS.primary.light}]/10 dark:bg-[${COLORS.primary.light}]/5`,
+      bgColor: "bg-primary-light/10 dark:bg-primary-light/5",
     },
     {
-      icon: (
-        <Car
-          className={`w-6 h-6 text-[${COLORS.accent.light}] dark:text-[${COLORS.accent.dark}]`}
-        />
-      ),
+      icon: <Car className="w-6 h-6 text-accent-light dark:text-accent-dark" />,
       name: "Diesel S10",
       price: "R$ 6,19",
-      bgColor: `bg-[${COLORS.accent.light}]/10 dark:bg-[${COLORS.accent.light}]/5`,
+      bgColor: "bg-accent-light/10 dark:bg-accent-light/5",
     },
   ];
 
@@ -61,9 +52,7 @@ export function PricesSection() {
           animate={isInView ? "animate" : "initial"}
           className="max-w-4xl mx-auto"
         >
-          <h2
-            className={`text-center font-['Montserrat'] text-2xl md:text-3xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] mb-3`}
-          >
+          <h2 className="text-center font-['Montserrat'] text-2xl md:text-3xl font-bold text-primary-light dark:text-primary-dark mb-3">
             Preços Atualizados
           </h2>
 
@@ -93,9 +82,7 @@ export function PricesSection() {
                     <h3 className="text-base font-medium text-gray-800 dark:text-gray-100">
                       {item.name}
                     </h3>
-                    <p
-                      className={`text-2xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`}
-                    >
+                    <p className="text-2xl font-bold text-primary-light dark:text-primary-dark">
                       {item.price}
                     </p>
                   </div>
