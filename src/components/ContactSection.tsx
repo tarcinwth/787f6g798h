@@ -53,7 +53,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section className="relative py-16 bg-gradient-to-br from-white to-[#91A1FA]/10 dark:bg-gray-900 transition-colors duration-300">
+    <section className="relative py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Elementos decorativos de fundo */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent" />
@@ -78,16 +78,16 @@ export function ContactSection() {
                 <motion.div
                   key={item.title}
                   whileHover={{ scale: 1.02 }}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:shadow-md transition-all duration-300"
+                  className="bg-gray-50/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg p-4 hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`${item.bgColor} dark:bg-opacity-20 p-2 rounded-full`}
+                      className={`${item.bgColor} dark:bg-opacity-10 p-2 rounded-full`}
                     >
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-800 dark:text-white text-sm">
+                      <h3 className="font-medium text-gray-800 dark:text-gray-100 text-sm">
                         {item.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -99,7 +99,7 @@ export function ContactSection() {
               ))}
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden h-[400px] lg:h-[450px]">
+            <div className="bg-gray-50/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-[400px] lg:h-[450px] border border-gray-100 dark:border-gray-700">
               <InteractiveMap />
             </div>
           </div>
