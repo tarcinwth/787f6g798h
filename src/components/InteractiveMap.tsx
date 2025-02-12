@@ -9,6 +9,9 @@ export function InteractiveMap() {
 
   const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=Posto+Catitú&center=${postoLocation.lat},${postoLocation.lng}&zoom=15&language=pt-BR`;
 
+  // Adicione temporariamente para debug:
+  console.log("API Key:", import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
+
   return (
     <div className="relative h-[400px] rounded-xl overflow-hidden">
       <iframe
