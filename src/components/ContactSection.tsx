@@ -23,13 +23,13 @@ export function ContactSection() {
     {
       icon: <Mail className="w-6 h-6 text-[#FAB432]" />,
       title: "Email",
-      info: "contato@postocatitu.com.br",
+      info: "postocatitu@gmail.com",
       bgColor: "bg-[#FAB432]/10",
     },
     {
       icon: <MapPin className="w-6 h-6 text-[#7901FA]" />,
       title: "Endereço",
-      info: "BR 116, KM 486 - Amargosa, BA",
+      info: "R. Idalina Figueredo Batista, 406 - Amargosa, BA, 45300-000",
       bgColor: "bg-[#7901FA]/10",
     },
     {
@@ -41,7 +41,7 @@ export function ContactSection() {
     {
       icon: <Building2 className="w-6 h-6 text-[#FA4534]" />,
       title: "CNPJ",
-      info: "XX.XXX.XXX/0001-XX",
+      info: "33.880.610/0001-86",
       bgColor: "bg-[#FA4534]/10",
     },
     {

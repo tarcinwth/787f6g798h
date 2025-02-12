@@ -34,19 +34,7 @@ export function AboutSection({ imagemSobre }: AboutSectionProps) {
 
   return (
     <section className="relative py-20 bg-gradient-to-br from-[#7901FA] to-[#FA78D9] overflow-hidden">
-      {/* Elementos decorativos */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/10 to-transparent" />
-
-        {/* Padrão de hexágonos ou linhas */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-px h-full bg-white transform -skew-x-12" />
-          <div className="absolute top-0 right-1/4 w-px h-full bg-white transform skew-x-12" />
-          <div className="absolute top-1/4 left-0 w-full h-px bg-white transform -skew-y-12" />
-          <div className="absolute bottom-1/4 left-0 w-full h-px bg-white transform skew-y-12" />
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
 
       <div className="container mx-auto px-4 relative">
         <motion.div
@@ -67,16 +55,14 @@ export function AboutSection({ imagemSobre }: AboutSectionProps) {
                 atendimento aos nossos clientes.
               </p>
               <p className="text-white/90 leading-relaxed">
-                Localizado estrategicamente na BR 116, KM 486, nos tornamos um
-                ponto de referência para motoristas locais e viajantes. Nossa
-                estrutura moderna e equipe altamente capacitada garantem uma
-                experiência única de abastecimento.
+                Localizado na R. Idalina Figueredo Batista, 406 - Amargosa, BA,
+                nos tornamos um ponto de referência para motoristas locais e
+                viajantes.
               </p>
               <p className="text-white/90 leading-relaxed">
                 Trabalhamos com os melhores fornecedores do mercado, garantindo
                 combustível de alta qualidade e serviços que vão além do
-                abastecimento. Nossa loja de conveniência oferece uma variedade
-                de produtos para tornar sua parada ainda mais agradável.
+                abastecimento.
               </p>
             </div>
 
