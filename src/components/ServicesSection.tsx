@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import { SERVICES } from "../config/services";
-import { COLORS, ANIMATIONS } from "../config/theme";
+import { ANIMATIONS } from "../config/theme";
 
 export function ServicesSection() {
   const { ref, isInView } = useInView();
@@ -25,9 +25,7 @@ export function ServicesSection() {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <h2
-            className={`text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] mb-12`}
-          >
+          <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-primary-light dark:text-primary-dark mb-12">
             Nossos Serviços
           </h2>
 
@@ -45,9 +43,7 @@ export function ServicesSection() {
                 <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:rotate-6">
                   {service.icon}
                 </div>
-                <h3
-                  className={`text-xl font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-[${COLORS.primary.light}] dark:group-hover:text-[${COLORS.primary.dark}] transition-colors`}
-                >
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
