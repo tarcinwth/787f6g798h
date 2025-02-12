@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import {
   Droplet,
-  Oil,
+  Fuel,
   Store,
   Gauge,
   Car,
@@ -21,7 +21,7 @@ export function ServicesSection() {
       desc: "Gasolina, Etanol e Diesel S10 de alta qualidade e procedência garantida.",
     },
     {
-      icon: <Oil className="w-8 h-8 text-[#FAB432]" />,
+      icon: <Fuel className="w-8 h-8 text-[#FAB432]" />,
       title: "Troca de Óleo",
       desc: "Serviço profissional de troca de óleo com produtos das melhores marcas.",
     },
