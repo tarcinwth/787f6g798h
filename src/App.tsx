@@ -27,36 +27,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { Header } from "./components/Header";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { FuelPrices } from "./components/FuelPrices";
-import banner1 from "./assets/banner1.jpeg";
-import banner2 from "./assets/banner2.jpeg";
-import banner3 from "./assets/banner3.jpeg";
-import imagemSobre from "./assets/sobre.jpeg";
 import { seoConfig } from "./config/seo";
-
-const heroImages = [banner1, banner2, banner3];
-
-const services = [
-  {
-    icon: "🛢️",
-    title: "Combustível de Qualidade",
-    desc: "Gasolina, Etanol e Diesel S10 de alta qualidade.",
-  },
-  {
-    icon: "🚗",
-    title: "Troca de Óleo",
-    desc: "Serviço profissional de troca de óleo para seu veículo.",
-  },
-  {
-    icon: "🏪",
-    title: "Conveniência",
-    desc: "Loja de conveniência com produtos variados.",
-  },
-  {
-    icon: "💧",
-    title: "Calibragem",
-    desc: "Calibragem gratuita dos pneus.",
-  },
-] as const;
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,7 +40,35 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const images = [banner1, banner2, banner3];
+  // Usando caminhos públicos para as imagens
+  const images = [
+    "/images/banner1.jpeg",
+    "/images/banner2.jpeg",
+    "/images/banner3.jpeg",
+  ];
+
+  const services = [
+    {
+      icon: "🛢️",
+      title: "Combustível de Qualidade",
+      desc: "Gasolina, Etanol e Diesel S10 de alta qualidade.",
+    },
+    {
+      icon: "🚗",
+      title: "Troca de Óleo",
+      desc: "Serviço profissional de troca de óleo para seu veículo.",
+    },
+    {
+      icon: "🏪",
+      title: "Conveniência",
+      desc: "Loja de conveniência com produtos variados.",
+    },
+    {
+      icon: "💧",
+      title: "Calibragem",
+      desc: "Calibragem gratuita dos pneus.",
+    },
+  ];
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -88,7 +87,7 @@ export default function App() {
           />
           <meta property="og:title" content={seoConfig.title} />
           <meta property="og:description" content={seoConfig.description} />
-          <meta property="og:image" content={banner1} />
+          <meta property="og:image" content="/images/banner1.jpeg" />
           <meta property="og:url" content={seoConfig.siteUrl} />
         </Helmet>
 
@@ -105,7 +104,7 @@ export default function App() {
         </section>
 
         <ServicesSection services={services} />
-        <AboutSection imagemSobre={imagemSobre} />
+        <AboutSection imagemSobre="/images/sobre.jpeg" />
         <ContactSection />
         <section className="py-20 bg-[#7901FA]">
           <div className="container mx-auto px-4">
