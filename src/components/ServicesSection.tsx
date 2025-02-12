@@ -1,4 +1,6 @@
 import { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "../hooks/useInView";
 
 interface Service {
   icon: React.ReactNode;
@@ -11,6 +13,8 @@ interface ServicesSectionProps {
 }
 
 export function ServicesSection({ services }: ServicesSectionProps) {
+  const { ref, isInView } = useInView();
+
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Elementos decorativos de fundo */}

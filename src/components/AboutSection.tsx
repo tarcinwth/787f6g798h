@@ -1,8 +1,13 @@
+import { motion } from "framer-motion";
+import { useInView } from "../hooks/useInView";
+
 interface AboutSectionProps {
   imagemSobre: string;
 }
 
 export function AboutSection({ imagemSobre }: AboutSectionProps) {
+  const { ref, isInView } = useInView();
+
   return (
     <section className="relative py-20 bg-gradient-to-br from-[#7901FA] to-[#FA78D9] overflow-hidden">
       {/* Elementos decorativos */}
@@ -19,7 +24,13 @@ export function AboutSection({ imagemSobre }: AboutSectionProps) {
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+        className="container mx-auto px-4"
+      >
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <div className="text-white relative">
             {/* Elemento decorativo do título */}
@@ -81,7 +92,7 @@ export function AboutSection({ imagemSobre }: AboutSectionProps) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

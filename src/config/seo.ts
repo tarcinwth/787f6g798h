@@ -7,4 +7,14 @@ export const seoConfig = {
     instagram: "https://www.instagram.com/posto_catitu/",
     facebook: "https://www.facebook.com/elma.rodrigues.5",
   },
+  openGraph: {
+    images: [
+      {
+        url: "https://postocatitu.com.br/images/posto-catitu-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Posto Catitú",
+      },
+    ],
+  },
 };

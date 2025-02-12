@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { InteractiveMap } from "./InteractiveMap";
 
 export function ContactSection() {
   return (
@@ -22,21 +23,9 @@ export function ContactSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Mapa com efeito de borda */}
+          {/* Substitua o iframe existente pelo InteractiveMap */}
           <div className="group relative bg-white rounded-xl shadow-lg transition-all duration-500 hover:-translate-y-1">
-            {/* Borda gradiente animada */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FA4534] to-[#FAB432] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur" />
-
-            <div className="relative bg-white rounded-xl h-[400px] overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.160399496156!2d-39.588833924922405!3d-13.035914387285375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x73fdd27ae190459%3A0x245ccc47bbfe0d31!2sPosto%20Catit%C3%BA!5e1!3m2!1spt-BR!2sbr!4v1738858126948!5m2!1spt-BR!2sbr"
-                className="w-full h-full rounded-xl"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localização do Posto Catitú"
-                allowFullScreen
-              />
-            </div>
+            <InteractiveMap />
           </div>
 
           {/* Cards de informações de contato */}
