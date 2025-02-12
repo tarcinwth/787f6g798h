@@ -1,81 +1,94 @@
-import { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
+import {
+  Droplet,
+  Oil,
+  Store,
+  Gauge,
+  Car,
+  Coffee,
+  CreditCard,
+  Clock,
+} from "lucide-react";
 
-interface Service {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}
-
-interface ServicesSectionProps {
-  services: Service[];
-}
-
-export function ServicesSection({ services }: ServicesSectionProps) {
+export function ServicesSection() {
   const { ref, isInView } = useInView();
 
+  const services = [
+    {
+      icon: <Droplet className="w-8 h-8 text-[#FA4534]" />,
+      title: "Combustível de Qualidade",
+      desc: "Gasolina, Etanol e Diesel S10 de alta qualidade e procedência garantida.",
+    },
+    {
+      icon: <Oil className="w-8 h-8 text-[#FAB432]" />,
+      title: "Troca de Óleo",
+      desc: "Serviço profissional de troca de óleo com produtos das melhores marcas.",
+    },
+    {
+      icon: <Store className="w-8 h-8 text-[#7901FA]" />,
+      title: "Conveniência",
+      desc: "Loja completa com bebidas, snacks, produtos automotivos e muito mais.",
+    },
+    {
+      icon: <Gauge className="w-8 h-8 text-[#FA78D9]" />,
+      title: "Calibragem",
+      desc: "Calibragem gratuita dos pneus com equipamentos de alta precisão.",
+    },
+    {
+      icon: <Car className="w-8 h-8 text-[#FA4534]" />,
+      title: "Lavagem",
+      desc: "Serviço de lavagem completa para seu veículo, deixando-o impecável.",
+    },
+    {
+      icon: <Coffee className="w-8 h-8 text-[#FAB432]" />,
+      title: "Café",
+      desc: "Café fresco e quentinho para sua parada ser ainda mais agradável.",
+    },
+    {
+      icon: <CreditCard className="w-8 h-8 text-[#7901FA]" />,
+      title: "Pagamento Flexível",
+      desc: "Aceitamos todos os cartões, PIX e dinheiro para sua comodidade.",
+    },
+    {
+      icon: <Clock className="w-8 h-8 text-[#FA78D9]" />,
+      title: "24 Horas",
+      desc: "Atendimento 24 horas por dia, 7 dias por semana para melhor servir.",
+    },
+  ];
+
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Elementos decorativos de fundo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FA4534]/5 to-transparent" />
-      <div className="absolute -right-40 top-0 w-80 h-80 bg-[#FAB432]/10 rounded-full blur-3xl" />
-      <div className="absolute -left-40 bottom-0 w-80 h-80 bg-[#FA4534]/10 rounded-full blur-3xl" />
-
-      {/* Linhas decorativas */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-[#FA4534] to-transparent" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-[#FA4534] to-transparent" />
-      </div>
-
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-16">
-          <h2 className="relative inline-block font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#1A1A1A]">
-            <span className="relative z-10">Nossos Serviços</span>
-            {/* Decoração do título */}
-            <div className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-[#FA4534]/20 to-[#FAB432]/20 -skew-x-12" />
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+        >
+          <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] mb-12">
+            Nossos Serviços
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Oferecemos serviços completos para seu veículo com a qualidade que
-            você merece
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {services.map((service, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden"
-            >
-              {/* Gradiente de fundo animado */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FA4534]/5 via-[#FAB432]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Círculo decorativo */}
-              <div className="absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br from-[#FA4534]/10 to-[#FAB432]/10 rounded-full transform group-hover:scale-150 transition-transform duration-500" />
-
-              <div className="relative p-8">
-                <div className="flex items-start gap-6">
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-[#FA4534]/10 to-[#FAB432]/10 group-hover:from-[#FA4534]/20 group-hover:to-[#FAB432]/20 transition-colors duration-300">
-                    <div className="text-[#FA4534] group-hover:scale-110 transition-transform duration-300">
-                      {service.icon}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-['Montserrat'] text-xl font-semibold text-[#1A1A1A] group-hover:text-[#FA4534] transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mt-2 leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow group"
+              >
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  {service.icon}
                 </div>
-              </div>
-
-              {/* Linha decorativa inferior */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#FA4534] to-[#FAB432] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-            </div>
-          ))}
-        </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600">{service.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

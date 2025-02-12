@@ -1,45 +1,45 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { navigationLinks } from "../config/navigation";
+import { motion } from "framer-motion";
 
-export function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+interface MobileMenuProps {
+  navItems: Array<{ label: string; href: string }>;
+  isScrolled: boolean;
+  onClose: () => void;
+}
 
+export function MobileMenu({ navItems, isScrolled, onClose }: MobileMenuProps) {
   return (
-    <div className="md:hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="p-2 text-gray-600"
-        aria-label="Menu"
-      >
-        {isOpen ? <X /> : <Menu />}
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-lg"
-          >
-            <nav className="py-4">
-              {navigationLinks.map((item) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="block px-6 py-3 text-gray-600 hover:bg-gray-50"
-                  whileHover={{ x: 10 }}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className={`md:hidden ${
+        isScrolled ? "bg-white" : "bg-black/90 backdrop-blur-lg"
+      }`}
+    >
+      <nav className="container mx-auto px-4 py-4">
+        <ul className="space-y-4">
+          {navItems.map((item, index) => (
+            <motion.li
+              key={item.label}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <a
+                href={item.href}
+                onClick={onClose}
+                className={`block py-2 text-lg font-medium ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-[#FA4534]"
+                    : "text-white hover:text-[#FA4534]"
+                }`}
+              >
+                {item.label}
+              </a>
+            </motion.li>
+          ))}
+        </ul>
+      </nav>
+    </motion.div>
   );
 }
