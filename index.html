@@ -23,11 +23,10 @@
     content="Posto Catitú - Combustível de qualidade 24h em São Paulo. Oferecemos os melhores serviços e produtos para seu veículo." />
 
   <script>
-    // Verificar preferência de tema salva
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+    // Apenas aplicar o tema salvo, deixar a lógica de preferência para o ThemeContext
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      document.documentElement.classList.add(theme);
     }
   </script>
 </head>

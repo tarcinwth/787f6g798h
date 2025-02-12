@@ -1,9 +1,17 @@
+import { COLORS } from "./src/config/theme";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        primary: COLORS.primary,
+        secondary: COLORS.secondary,
+        accent: COLORS.accent,
+        tertiary: COLORS.tertiary,
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-out",
