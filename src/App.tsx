@@ -80,7 +80,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
-      <main>
+      <main className="bg-white dark:bg-gray-900">
         <Helmet>
           <title>{seoConfig.title}</title>
           <meta name="description" content={seoConfig.description} />
