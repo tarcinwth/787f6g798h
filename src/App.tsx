@@ -59,7 +59,7 @@ const services = [
   },
 ] as const;
 
-export function App() {
+export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
