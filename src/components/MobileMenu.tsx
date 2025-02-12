@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import type { NavItem } from "../types";
 
 interface MobileMenuProps {
-  navItems: Array<{ label: string; href: string }>;
+  navItems: NavItem[];
   isScrolled: boolean;
   onClose: () => void;
 }

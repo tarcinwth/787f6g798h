@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { useInView } from "../hooks/useInView";
+import { COLORS, ANIMATIONS } from "../config/theme";
 
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,17 +33,7 @@ export function NewsletterForm() {
 
     try {
       setStatus("loading");
-
-      // Simula uma chamada à API
       await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // Aqui você implementaria a chamada real à sua API
-      // const response = await fetch('/api/newsletter', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email })
-      // });
-
       setStatus("success");
       setMessage(
         "Obrigado por se inscrever! Em breve você receberá nossas novidades."
@@ -56,15 +46,17 @@ export function NewsletterForm() {
   };
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          {...ANIMATIONS.slideUp}
+          animate={isInView ? "animate" : "initial"}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-[#7901FA] dark:text-[#9B4DFF] mb-4">
+          <h2
+            className={`text-2xl md:text-3xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] mb-4`}
+          >
             Receba nossas ofertas
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -80,37 +72,39 @@ export function NewsletterForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Seu melhor e-mail"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#7901FA] dark:focus:ring-[#9B4DFF] transition-all duration-300"
+              className={`flex-1 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary.light}] dark:focus:ring-[${COLORS.primary.dark}] transition-all duration-300`}
               disabled={status === "loading"}
               aria-label="Email para newsletter"
               aria-invalid={status === "error"}
               aria-describedby={message ? "newsletter-message" : undefined}
             />
-            <button
+            <motion.button
               type="submit"
               disabled={status === "loading"}
-              className="px-6 py-3 bg-[#7901FA] dark:bg-[#9B4DFF] text-white font-medium rounded-lg hover:bg-[#6001D1] dark:hover:bg-[#8B3DFF] transition-colors duration-300 shadow-lg hover:shadow-xl"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`px-6 py-3 bg-[${COLORS.primary.light}] dark:bg-[${COLORS.primary.dark}] text-white font-medium rounded-lg hover:bg-[${COLORS.primary.light}]/90 dark:hover:bg-[${COLORS.primary.dark}]/90 transition-colors duration-300 shadow-lg hover:shadow-xl`}
             >
               {status === "loading" ? (
-                <>
-                  <span className="animate-spin">⏳</span> Enviando...
-                </>
+                <span className="animate-spin">⏳</span>
               ) : (
-                <>Inscrever-se</>
+                "Inscrever-se"
               )}
-            </button>
+            </motion.button>
           </form>
 
           {message && (
-            <p
+            <motion.p
+              {...ANIMATIONS.fadeIn}
+              animate={isInView ? "animate" : "initial"}
               id="newsletter-message"
               className={`mt-4 text-sm ${
-                status === "success" ? "text-green-300" : "text-red-300"
+                status === "success" ? "text-green-500" : "text-red-500"
               }`}
               role="alert"
             >
               {message}
-            </p>
+            </motion.p>
           )}
 
           <p className="text-gray-500 dark:text-gray-500 text-xs mt-4">

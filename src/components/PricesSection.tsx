@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useInView";
 import { Fuel, Droplet, Car, Clock } from "lucide-react";
+import { COLORS, ANIMATIONS } from "../config/theme";
+import type { PriceItem } from "../types";
 
 export function PricesSection() {
   const { ref, isInView } = useInView();
+
   const lastUpdate = new Date("2024-01-20T08:30:00");
 
   const formatDateTime = (date: Date) => {
@@ -16,24 +19,36 @@ export function PricesSection() {
     }).format(date);
   };
 
-  const prices = [
+  const prices: PriceItem[] = [
     {
-      icon: <Fuel className="w-6 h-6 text-[#FA4534] dark:text-[#FF6B5D]" />,
+      icon: (
+        <Fuel
+          className={`w-6 h-6 text-[${COLORS.secondary.light}] dark:text-[${COLORS.secondary.dark}]`}
+        />
+      ),
       name: "Gasolina",
       price: "R$ 5,89",
-      bgColor: "bg-[#FA4534]/10 dark:bg-[#FA4534]/5",
+      bgColor: `bg-[${COLORS.secondary.light}]/10 dark:bg-[${COLORS.secondary.light}]/5`,
     },
     {
-      icon: <Droplet className="w-6 h-6 text-[#7901FA] dark:text-[#9B4DFF]" />,
+      icon: (
+        <Droplet
+          className={`w-6 h-6 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`}
+        />
+      ),
       name: "Etanol",
       price: "R$ 3,89",
-      bgColor: "bg-[#7901FA]/10 dark:bg-[#7901FA]/5",
+      bgColor: `bg-[${COLORS.primary.light}]/10 dark:bg-[${COLORS.primary.light}]/5`,
     },
     {
-      icon: <Car className="w-6 h-6 text-[#FAB432] dark:text-[#FFD280]" />,
+      icon: (
+        <Car
+          className={`w-6 h-6 text-[${COLORS.accent.light}] dark:text-[${COLORS.accent.dark}]`}
+        />
+      ),
       name: "Diesel S10",
       price: "R$ 6,19",
-      bgColor: "bg-[#FAB432]/10 dark:bg-[#FAB432]/5",
+      bgColor: `bg-[${COLORS.accent.light}]/10 dark:bg-[${COLORS.accent.light}]/5`,
     },
   ];
 
@@ -42,11 +57,13 @@ export function PricesSection() {
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          {...ANIMATIONS.slideUp}
+          animate={isInView ? "animate" : "initial"}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-center font-['Montserrat'] text-2xl md:text-3xl font-bold text-[#7901FA] dark:text-[#9B4DFF] mb-3">
+          <h2
+            className={`text-center font-['Montserrat'] text-2xl md:text-3xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] mb-3`}
+          >
             Preços Atualizados
           </h2>
 
@@ -61,8 +78,8 @@ export function PricesSection() {
             {prices.map((item) => (
               <motion.div
                 key={item.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                {...ANIMATIONS.slideUp}
+                animate={isInView ? "animate" : "initial"}
                 whileHover={{ scale: 1.02 }}
                 className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
               >
@@ -76,7 +93,9 @@ export function PricesSection() {
                     <h3 className="text-base font-medium text-gray-800 dark:text-gray-100">
                       {item.name}
                     </h3>
-                    <p className="text-2xl font-bold text-[#7901FA] dark:text-[#9B4DFF]">
+                    <p
+                      className={`text-2xl font-bold text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`}
+                    >
                       {item.price}
                     </p>
                   </div>
@@ -86,8 +105,8 @@ export function PricesSection() {
           </div>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
+            {...ANIMATIONS.fadeIn}
+            animate={isInView ? "animate" : "initial"}
             className="text-center text-gray-500 dark:text-gray-400 mt-4 text-xs"
           >
             * Preços sujeitos a alteração sem aviso prévio

@@ -1,24 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MobileMenu } from "./MobileMenu";
 import { useTheme } from "../contexts/ThemeContext";
+import { useScroll } from "../hooks/useScroll";
+import { COLORS, ANIMATIONS } from "../config/theme";
+import type { NavItem } from "../types";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const isScrolled = useScroll(20);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: "Início", href: "#" },
     { label: "Serviços", href: "#services" },
     { label: "Sobre", href: "#about" },
@@ -76,9 +70,17 @@ export function Header() {
               whileTap={{ scale: 0.95 }}
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-white" />
+                <Sun
+                  className={`w-5 h-5 ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
+                />
               ) : (
-                <Moon className="w-5 h-5 text-gray-700" />
+                <Moon
+                  className={`w-5 h-5 ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
+                />
               )}
             </motion.button>
           </nav>
@@ -96,9 +98,17 @@ export function Header() {
               whileTap={{ scale: 0.95 }}
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-white" />
+                <Sun
+                  className={`w-5 h-5 ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
+                />
               ) : (
-                <Moon className="w-5 h-5 text-gray-700" />
+                <Moon
+                  className={`w-5 h-5 ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
+                />
               )}
             </motion.button>
 

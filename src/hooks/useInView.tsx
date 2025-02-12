@@ -1,12 +1,11 @@
-import { useInView as useFramerInView } from "framer-motion";
-import { useRef } from "react";
+import { useInView as useIntersectionObserver } from "react-intersection-observer";
 
-export function useInView() {
-  const ref = useRef(null);
-  const isInView = useFramerInView(ref, {
-    once: true,
-    margin: "-100px",
+export function useInView(options = {}) {
+  const { ref, inView } = useIntersectionObserver({
+    threshold: 0.1,
+    triggerOnce: true,
+    ...options,
   });
 
-  return { ref, isInView };
+  return { ref, isInView: inView };
 }

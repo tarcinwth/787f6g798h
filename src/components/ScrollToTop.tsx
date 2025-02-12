@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { COLORS, ANIMATIONS } from "../config/theme";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.pageYOffset > 300);
     };
 
     window.addEventListener("scroll", toggleVisibility);
@@ -33,7 +30,7 @@ export function ScrollToTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-gradient-to-r from-[#FA4534] to-[#FAB432] text-white shadow-lg hover:scale-110 transition-transform duration-300"
+          className={`fixed bottom-4 right-4 z-50 p-3 rounded-full bg-gradient-to-r from-[${COLORS.secondary.light}] to-[${COLORS.accent.light}] text-white shadow-lg hover:scale-110 transition-transform duration-300`}
           aria-label="Voltar ao topo"
         >
           <ArrowUp className="w-6 h-6" />

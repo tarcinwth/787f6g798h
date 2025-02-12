@@ -29,6 +29,7 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
 import { FuelPrices } from "./components/FuelPrices";
 import { seoConfig } from "./config/seo";
 import { useSystemTheme } from "./hooks/useSystemTheme";
+import { PricesSection } from "./components/PricesSection";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -102,7 +103,7 @@ export default function App() {
             <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] mb-8">
               Preços Atualizados
             </h2>
-            <FuelPrices />
+            <PricesSection />
           </div>
         </section>
 
