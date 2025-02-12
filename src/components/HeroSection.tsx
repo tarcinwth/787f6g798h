@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, MessageCircle } from "lucide-react";
 
 interface HeroSectionProps {
   images: string[];
@@ -45,60 +44,30 @@ export function HeroSection({ images }: HeroSectionProps) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="absolute inset-0 flex items-center justify-center"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
       >
-        <div className="text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Posto Catitú</h1>
-          <p className="text-xl md:text-2xl">
-            Qualidade e confiança há mais de 5 anos
-          </p>
+        <h1 className="text-4xl md:text-6xl font-bold mb-2">Posto Catitú</h1>
+        <h2 className="text-2xl md:text-4xl text-[#FAB432] font-semibold mb-4">
+          Combustível de Qualidade 24h
+        </h2>
+        <p className="text-xl md:text-2xl mb-8">
+          Há 5 anos abastecendo sua confiança em Amargosa
+        </p>
+        <div className="flex gap-4">
+          <a
+            href="#location"
+            className="bg-[#FA4534] hover:bg-[#FA4534]/90 text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors"
+          >
+            <span>Localização</span>
+          </a>
+          <a
+            href="#contact"
+            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors"
+          >
+            <span>Fale Conosco</span>
+          </a>
         </div>
       </motion.div>
-
-      {/* Conteúdo principal */}
-      <div className="relative h-full flex items-center justify-center text-white text-center px-4">
-        <div className="max-w-[90vw] sm:max-w-2xl">
-          <div className="relative">
-            {/* Elemento decorativo atrás do título */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#FA4534]/20 to-[#FAB432]/20 blur-xl rounded-full" />
-
-            <h1 className="relative font-['Montserrat'] text-3xl sm:text-4xl md:text-6xl font-bold mb-4 transform transition-transform duration-700 hover:scale-105">
-              Posto Catitú
-              <span className="block text-xl sm:text-2xl md:text-3xl mt-2 text-[#FAB432]">
-                Combustível de Qualidade 24h
-              </span>
-            </h1>
-          </div>
-
-          <p className="text-lg sm:text-xl mb-8 px-2 text-white/90">
-            Há 5 anos abastecendo sua confiança em Amargosa
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
-            <a
-              href="#location"
-              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 overflow-hidden"
-            >
-              {/* Background animado */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FA4534] to-[#FAB432] transform group-hover:scale-105 transition-transform duration-500" />
-              <span className="relative flex items-center justify-center gap-2 text-sm sm:text-base">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5" /> Localização
-              </span>
-            </a>
-
-            <a
-              href="https://www.instagram.com/posto_catitu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20"
-            >
-              <span className="relative flex items-center justify-center gap-2 text-sm sm:text-base group-hover:text-[#FAB432] transition-colors">
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" /> Fale Conosco
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
