@@ -1,37 +1,31 @@
 import { Facebook, Instagram, Mail } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-r from-[#7901FA] to-[#FA78D9] text-white overflow-hidden">
-      {/* Elementos decorativos */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        <div className="absolute -right-40 top-20 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute -left-40 bottom-20 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 py-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <FooterAbout />
-          <FooterLinks />
-          <FooterHours />
-          <FooterSocial />
-        </div>
-
-        <div className="relative border-t border-white/10 mt-12 pt-8 text-center space-y-2">
-          <p className="text-white/60 hover:text-white/80 transition-colors">
-            &copy; {new Date().getFullYear()} Posto Catitú. Todos os direitos
+    <footer className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col items-center justify-center">
+          <Image
+            src="/images/logo.png"
+            alt="Logo Posto Catitú"
+            width={120}
+            height={120}
+            className="mb-4"
+          />
+          <p className="text-gray-600 dark:text-gray-400 text-sm text-center">
+            © {new Date().getFullYear()} Posto Catitú. Todos os direitos
             reservados.
           </p>
-          <p className="text-white/60">
-            Feito com <span className="text-red-500">❤️</span> por{" "}
+          <p className="text-gray-500 dark:text-gray-500 text-xs mt-2 text-center">
+            Desenvolvido por{" "}
             <a
-              href="https://www.instagram.com/jovemtata_/"
+              href="https://www.linkedin.com/in/lucasdesena/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#FAB432] hover:text-white transition-colors duration-300"
+              className="text-[#7901FA] dark:text-[#9B4DFF] hover:underline"
             >
-              Wota
+              Lucas de Sena
             </a>
           </p>
         </div>
