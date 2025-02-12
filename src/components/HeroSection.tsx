@@ -7,16 +7,43 @@ interface HeroSectionProps {
 
 export function HeroSection({ images }: HeroSectionProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Pré-carregamento das imagens
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      });
+
+      try {
+        await Promise.all(imagePromises);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Erro ao carregar imagens:", error);
+        setIsLoading(false);
+      }
+    };
+
+    preloadImages();
+  }, [images]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
+    if (!isLoading) {
+      const timer = setInterval(() => {
+        setCurrentImageIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 5000);
 
-    return () => clearInterval(timer);
-  }, [images.length]);
+      return () => clearInterval(timer);
+    }
+  }, [images.length, isLoading]);
 
   return (
     <section className="relative h-screen">
@@ -27,13 +54,14 @@ export function HeroSection({ images }: HeroSectionProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
           className="absolute inset-0"
         >
           <img
             src={images[currentImageIndex]}
             alt={`Banner ${currentImageIndex + 1}`}
             className="w-full h-full object-cover"
+            style={{ opacity: isLoading ? 0 : 1 }}
           />
           {/* Overlay gradiente */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
