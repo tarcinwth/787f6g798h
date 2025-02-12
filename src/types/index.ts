@@ -12,6 +12,7 @@ export interface ServiceItem {
   Icon: LucideIcon;
   title: string;
   desc: string;
+  color: "primary" | "secondary" | "accent" | "tertiary";
 }
 
 export interface ContactInfo {
