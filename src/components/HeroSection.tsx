@@ -7,6 +7,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ images }: HeroSectionProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [nextImageIndex, setNextImageIndex] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
   // Pré-carregamento das imagens
@@ -36,39 +37,46 @@ export function HeroSection({ images }: HeroSectionProps) {
   useEffect(() => {
     if (!isLoading) {
       const timer = setInterval(() => {
-        setCurrentImageIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
+        setNextImageIndex((currentImageIndex + 1) % images.length);
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
       }, 5000);
 
       return () => clearInterval(timer);
     }
-  }, [images.length, isLoading]);
+  }, [images.length, isLoading, currentImageIndex]);
 
   return (
-    <section className="relative h-screen">
-      {/* Apenas uma imagem é mostrada por vez */}
-      <AnimatePresence initial={false} mode="wait">
+    <section className="relative h-screen overflow-hidden">
+      {/* Imagem atual */}
+      <div className="absolute inset-0">
+        <img
+          src={images[currentImageIndex]}
+          alt={`Banner ${currentImageIndex + 1}`}
+          className="w-full h-full object-cover"
+          style={{ opacity: isLoading ? 0 : 1 }}
+        />
+      </div>
+
+      {/* Próxima imagem com fade-in */}
+      <AnimatePresence initial={false}>
         <motion.div
           key={currentImageIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }} // Reduzido para 0.3 segundos
           className="absolute inset-0"
         >
           <img
             src={images[currentImageIndex]}
             alt={`Banner ${currentImageIndex + 1}`}
             className="w-full h-full object-cover"
-            style={{ opacity: isLoading ? 0 : 1 }}
           />
-          {/* Overlay gradiente */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Texto único, não mais dentro do loop de imagens */}
+      {/* Conteúdo */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
