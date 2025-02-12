@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Posto Catitú - Combustível de qualidade 24h em São Paulo. Oferecemos os melhores serviços e produtos para seu veículo." />
+  <meta name="theme-color" content="#1E3D59" />
+  <title>Posto Catitú - Combustível de Qualidade 24h</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Posto Catitú - Combustível de Qualidade 24h" />
+  <meta property="og:description"
+    content="Posto Catitú - Combustível de qualidade 24h em São Paulo. Oferecemos os melhores serviços e produtos para seu veículo." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Posto Catitú - Combustível de Qualidade 24h" />
+  <meta name="twitter:description"
+    content="Posto Catitú - Combustível de qualidade 24h em São Paulo. Oferecemos os melhores serviços e produtos para seu veículo." />
+
+  <script>
+    // Apenas aplicar o tema salvo, deixar a lógica de preferência para o ThemeContext
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      document.documentElement.classList.add(theme);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
