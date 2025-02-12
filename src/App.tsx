@@ -27,35 +27,34 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { Header } from "./components/Header";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { FuelPrices } from "./components/FuelPrices";
-import { PhotoGallery } from "./components/PhotoGallery";
-import imagemPosto from "./images/posto1.jpg";
-import imagemPosto2 from "./images/posto2.jpg";
-import imagemBanner from "./images/banner.jpg";
-import imagemSobre from "./images/209327872_339480244417271_5955908138784163924_n.jpg";
+import banner1 from "./assets/banner1.jpeg";
+import banner2 from "./assets/banner2.jpeg";
+import banner3 from "./assets/banner3.jpeg";
+import imagemSobre from "./assets/sobre.jpeg";
 import { seoConfig } from "./config/seo";
 
-const heroImages = [imagemPosto, imagemPosto2, imagemBanner];
+const heroImages = [banner1, banner2, banner3];
 
 const services = [
   {
-    icon: <Fuel className="w-12 h-12" />,
-    title: "Combustível Premium",
-    desc: "Gasolina e diesel de alta qualidade",
+    icon: "🛢️",
+    title: "Combustível de Qualidade",
+    desc: "Gasolina, Etanol e Diesel S10 de alta qualidade.",
   },
   {
-    icon: <Car className="w-12 h-12" />,
+    icon: "🚗",
     title: "Troca de Óleo",
-    desc: "Serviço profissional e rápido",
+    desc: "Serviço profissional de troca de óleo para seu veículo.",
   },
   {
-    icon: <Coffee className="w-12 h-12" />,
+    icon: "🏪",
     title: "Conveniência",
-    desc: "Loja 24h com produtos selecionados",
+    desc: "Loja de conveniência com produtos variados.",
   },
   {
-    icon: <Gauge className="w-12 h-12" />,
-    title: "Calibragem de Pneus",
-    desc: "Calibragem gratuita e profissional",
+    icon: "💧",
+    title: "Calibragem",
+    desc: "Calibragem gratuita dos pneus.",
   },
 ] as const;
 
@@ -70,13 +69,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const images = ["/banner1.jpg", "/banner2.jpg", "/banner3.jpg"];
-
-  const services = [
-    // seus serviços aqui
-  ];
-
-  const imagemSobre = "/sobre.jpg";
+  const images = [banner1, banner2, banner3];
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -95,7 +88,7 @@ export default function App() {
           />
           <meta property="og:title" content={seoConfig.title} />
           <meta property="og:description" content={seoConfig.description} />
-          <meta property="og:image" content={imagemPosto} />
+          <meta property="og:image" content={banner1} />
           <meta property="og:url" content={seoConfig.siteUrl} />
         </Helmet>
 

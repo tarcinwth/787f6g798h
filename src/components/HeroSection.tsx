@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, MessageCircle } from "lucide-react";
 
 interface HeroSectionProps {
@@ -6,55 +7,57 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ images }: HeroSectionProps) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsFirstLoad(false), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % images.length);
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, [images.length]);
 
   return (
-    <section
-      className="relative h-[100svh] overflow-hidden"
-      aria-label="Banner principal"
-    >
-      {/* Elementos decorativos */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      </div>
+    <section className="relative h-screen">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentImageIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={images[currentImageIndex]}
+            alt={`Banner ${currentImageIndex + 1}`}
+            className="w-full h-full object-cover"
+          />
+          {/* Overlay gradiente */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Carrossel de imagens */}
-      <div className="absolute inset-0">
-        {images.map((img, idx) => (
-          <div
-            key={idx}
-            className={`absolute inset-0 ${
-              !isFirstLoad ? "transition-all duration-1000" : ""
-            } ${
-              idx === currentSlide
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-110"
-            }`}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center text-white">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-4xl md:text-6xl font-bold mb-4"
           >
-            <img
-              src={img}
-              alt={`Imagem do Posto Catitú ${idx + 1}`}
-              className="w-full h-full object-cover brightness-[0.6]"
-            />
-            {/* Overlay gradiente */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
-          </div>
-        ))}
+            Posto Catitú
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl"
+          >
+            Qualidade e confiança há mais de 5 anos
+          </motion.p>
+        </div>
       </div>
 
       {/* Conteúdo principal */}
@@ -100,23 +103,6 @@ export function HeroSection({ images }: HeroSectionProps) {
             </a>
           </div>
         </div>
-      </div>
-
-      {/* Indicadores do carrossel */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
-        {images.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlide(idx)}
-            aria-label={`Ir para slide ${idx + 1}`}
-            aria-current={idx === currentSlide}
-            className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all ${
-              idx === currentSlide
-                ? "bg-gradient-to-r from-[#FA4534] to-[#FAB432] w-6 sm:w-8"
-                : "bg-white/50 hover:bg-white"
-            }`}
-          />
-        ))}
       </div>
     </section>
   );

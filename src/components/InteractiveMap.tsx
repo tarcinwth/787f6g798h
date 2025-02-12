@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MapPin } from "lucide-react";
 import { GOOGLE_MAPS_API_KEY } from "../config/maps";
 
