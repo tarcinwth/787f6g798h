@@ -2,12 +2,43 @@ import { motion } from "framer-motion";
 
 export function LoadingSpinner() {
   return (
-    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50">
       <motion.div
-        className="w-16 h-16 border-4 border-[#FA4534] border-t-transparent rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-      />
+        className="flex flex-col items-center gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <div className="relative w-16 h-16">
+          <motion.div
+            className="absolute inset-0 border-4 border-[#FA4534] rounded-full"
+            animate={{
+              rotate: 360,
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 border-4 border-[#7901FA] rounded-full"
+            animate={{
+              rotate: -360,
+              scale: [1, 0.9, 1],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+        <p className="text-gray-600 dark:text-gray-300 font-medium">
+          Carregando...
+        </p>
+      </motion.div>
     </div>
   );
 }

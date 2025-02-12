@@ -13,7 +13,9 @@ export function MobileMenu({ navItems, isScrolled, onClose }: MobileMenuProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       className={`md:hidden ${
-        isScrolled ? "bg-white" : "bg-black/90 backdrop-blur-lg"
+        isScrolled
+          ? "bg-white dark:bg-gray-900"
+          : "bg-black/90 backdrop-blur-lg"
       }`}
     >
       <nav className="container mx-auto px-4 py-4">
@@ -28,13 +30,14 @@ export function MobileMenu({ navItems, isScrolled, onClose }: MobileMenuProps) {
               <a
                 href={item.href}
                 onClick={onClose}
-                className={`block py-2 text-lg font-medium ${
-                  isScrolled
-                    ? "text-gray-700 hover:text-[#FA4534]"
-                    : "text-white hover:text-[#FA4534]"
+                className={`block py-2 text-lg font-medium relative group ${
+                  isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white"
                 }`}
               >
-                {item.label}
+                <span className="relative">
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FA4534] transition-all duration-300 group-hover:w-full" />
+                </span>
               </a>
             </motion.li>
           ))}

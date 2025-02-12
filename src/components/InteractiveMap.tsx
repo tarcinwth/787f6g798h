@@ -1,6 +1,10 @@
+import { useTheme } from "../contexts/ThemeContext";
 import { MapPin } from "lucide-react";
 
 export function InteractiveMap() {
+  const { theme } = useTheme();
+  const mapStyle = theme === "dark" ? "night" : "roadmap";
+
   const postoLocation = {
     lat: -13.035914387285375,
     lng: -39.588833924922405,
@@ -8,9 +12,7 @@ export function InteractiveMap() {
 
   const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${
     import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-  }&q=Posto+Catitú&center=${postoLocation.lat},${
-    postoLocation.lng
-  }&zoom=15&language=pt-BR`;
+  }&q=Posto+Catitú,Amargosa+BA&zoom=15&maptype=${mapStyle}`;
 
   return (
     <div className="relative h-[400px] rounded-xl overflow-hidden">

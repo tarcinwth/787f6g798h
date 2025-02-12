@@ -53,10 +53,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section
-      id="contact"
-      className="relative py-20 bg-gradient-to-br from-white to-[#91A1FA]/10 overflow-hidden"
-    >
+    <section className="relative py-20 bg-gradient-to-br from-white to-[#91A1FA]/10 dark:from-gray-900 dark:to-[#7901FA]/10 transition-colors duration-300">
       {/* Elementos decorativos de fundo */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent" />
@@ -71,35 +68,38 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] mb-12">
+          <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] dark:text-[#9B4DFF] mb-12">
             Entre em Contato
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
               {contactInfo.map((item) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`${item.bgColor} p-3 rounded-full`}>
+                    <div
+                      className={`${item.bgColor} dark:bg-opacity-20 p-3 rounded-full`}
+                    >
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800">
+                      <h3 className="font-semibold text-gray-800 dark:text-white">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600">{item.info}</p>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {item.info}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden h-[400px] sm:h-[450px] lg:h-[500px]">
               <InteractiveMap />
             </div>
           </div>
