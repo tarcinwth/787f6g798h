@@ -1,5 +1,4 @@
 import { MapPin } from "lucide-react";
-import { GOOGLE_MAPS_API_KEY } from "../config/maps";
 
 export function InteractiveMap() {
   const postoLocation = {
@@ -7,10 +6,11 @@ export function InteractiveMap() {
     lng: -39.588833924922405,
   };
 
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=Posto+Catitú&center=${postoLocation.lat},${postoLocation.lng}&zoom=15&language=pt-BR`;
-
-  // Adicione temporariamente para debug:
-  console.log("API Key:", import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
+  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${
+    import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+  }&q=Posto+Catitú&center=${postoLocation.lat},${
+    postoLocation.lng
+  }&zoom=15&language=pt-BR`;
 
   return (
     <div className="relative h-[400px] rounded-xl overflow-hidden">
@@ -20,6 +20,7 @@ export function InteractiveMap() {
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Localização do Posto Catitú"
+        allowFullScreen
       />
       <a
         href={`https://www.google.com/maps/dir/?api=1&destination=${postoLocation.lat},${postoLocation.lng}`}

@@ -21,7 +21,8 @@ export function HeroSection({ images }: HeroSectionProps) {
 
   return (
     <section className="relative h-screen">
-      <AnimatePresence mode="wait">
+      {/* Apenas uma imagem é mostrada por vez */}
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentImageIndex}
           initial={{ opacity: 0 }}
@@ -40,25 +41,19 @@ export function HeroSection({ images }: HeroSectionProps) {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 flex items-center justify-center">
+      {/* Texto único, não mais dentro do loop de imagens */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
         <div className="text-center text-white">
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-6xl font-bold mb-4"
-          >
-            Posto Catitú
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Posto Catitú</h1>
+          <p className="text-xl md:text-2xl">
             Qualidade e confiança há mais de 5 anos
-          </motion.p>
+          </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Conteúdo principal */}
       <div className="relative h-full flex items-center justify-center text-white text-center px-4">
