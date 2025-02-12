@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { LucideIcon } from "lucide-react";
 
 export interface NavItem {
   label: string;
@@ -8,7 +9,7 @@ export interface NavItem {
 export type Theme = "light" | "dark";
 
 export interface ServiceItem {
-  icon: ReactNode;
+  Icon: LucideIcon;
   title: string;
   desc: string;
 }

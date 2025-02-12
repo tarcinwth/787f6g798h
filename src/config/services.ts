@@ -1,4 +1,5 @@
 import {
+  LucideIcon,
   Droplet,
   Fuel,
   Store,
@@ -11,48 +12,54 @@ import {
 import { COLORS } from "./theme";
 import type { ServiceItem } from "../types";
 
-const createIcon = (Icon: typeof Droplet) => (
+interface ServiceConfig {
+  Icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+const createIcon = (Icon: LucideIcon) => (
   <Icon className="w-8 h-8 text-secondary-light dark:text-secondary-dark" />
 );
 
-export const SERVICES: ServiceItem[] = [
+export const SERVICES: ServiceConfig[] = [
   {
-    icon: createIcon(Droplet),
+    Icon: Droplet,
     title: "Combustível de Qualidade",
     desc: "Gasolina, Etanol e Diesel S10 de alta qualidade e procedência garantida.",
   },
   {
-    icon: createIcon(Store),
+    Icon: Store,
     title: "Loja de Conveniência",
     desc: "Produtos variados para seu conforto, disponíveis 24 horas.",
   },
   {
-    icon: createIcon(Gauge),
+    Icon: Gauge,
     title: "Calibragem de Pneus",
     desc: "Serviço gratuito de calibragem para sua segurança.",
   },
   {
-    icon: createIcon(Car),
+    Icon: Car,
     title: "Troca de Óleo",
     desc: "Serviço profissional com produtos de primeira linha.",
   },
   {
-    icon: createIcon(Coffee),
+    Icon: Coffee,
     title: "Café da Manhã",
     desc: "Deliciosas opções para começar bem o dia.",
   },
   {
-    icon: createIcon(CreditCard),
+    Icon: CreditCard,
     title: "Formas de Pagamento",
     desc: "Aceitamos dinheiro, cartões e PIX.",
   },
   {
-    icon: createIcon(Clock),
+    Icon: Clock,
     title: "Atendimento 24h",
     desc: "Sempre aberto para melhor atender você.",
   },
   {
-    icon: createIcon(Fuel),
+    Icon: Fuel,
     title: "Diesel S10",
     desc: "Combustível de alta performance para seu veículo.",
   },
