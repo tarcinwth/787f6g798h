@@ -53,7 +53,7 @@ export function ContactSection() {
   ];
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-white to-[#91A1FA]/10 dark:from-gray-900 dark:to-[#7901FA]/10 transition-colors duration-300">
+    <section className="relative py-20 bg-gradient-to-br from-white to-[#91A1FA]/10 dark:bg-gray-900 transition-colors duration-300">
       {/* Elementos decorativos de fundo */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent" />
@@ -73,7 +73,7 @@ export function ContactSection() {
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactInfo.map((item) => (
                 <motion.div
                   key={item.title}
@@ -99,7 +99,7 @@ export function ContactSection() {
               ))}
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden h-[400px] sm:h-[450px] lg:h-[500px]">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden h-[600px] lg:h-[700px]">
               <InteractiveMap />
             </div>
           </div>

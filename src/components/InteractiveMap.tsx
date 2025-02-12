@@ -14,14 +14,13 @@ export function InteractiveMap() {
       <iframe
         src={`https://www.google.com/maps/embed/v1/place?key=${
           import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-        }&q=Posto+Catitú,Amargosa+BA&zoom=15&maptype=roadmap${
-          theme === "dark"
-            ? "&style=feature:all|element:all|invert_lightness:true|hue:0x00ffff"
-            : ""
-        }`}
+        }&q=Posto+Catitú,Amargosa+BA&zoom=15&maptype=roadmap`}
         width="100%"
         height="100%"
-        style={{ border: 0 }}
+        style={{
+          border: 0,
+          filter: theme === "dark" ? "invert(90%) hue-rotate(180deg)" : "none",
+        }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
