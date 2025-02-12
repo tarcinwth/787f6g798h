@@ -1,17 +1,14 @@
 import { Facebook, Instagram, Mail } from "lucide-react";
-import Image from "next/image";
 
 export function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-center">
-          <Image
+          <img
             src="/images/logo.png"
             alt="Logo Posto Catitú"
-            width={120}
-            height={120}
-            className="mb-4"
+            className="w-[120px] h-[120px] mb-4"
           />
           <p className="text-gray-600 dark:text-gray-400 text-sm text-center">
             © {new Date().getFullYear()} Posto Catitú. Todos os direitos
