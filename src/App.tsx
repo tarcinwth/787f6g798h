@@ -29,6 +29,7 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
 import { FuelPrices } from "./components/FuelPrices";
 import { seoConfig } from "./config/seo";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { useSystemTheme } from "./hooks/useSystemTheme";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +41,8 @@ export default function App() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useSystemTheme();
 
   // Usando caminhos públicos para as imagens
   const images = [

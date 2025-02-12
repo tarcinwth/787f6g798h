@@ -3,26 +3,29 @@ import { MapPin } from "lucide-react";
 
 export function InteractiveMap() {
   const { theme } = useTheme();
-  const mapStyle = theme === "dark" ? "night" : "roadmap";
 
   const postoLocation = {
     lat: -13.035914387285375,
     lng: -39.588833924922405,
   };
 
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${
-    import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-  }&q=Posto+Catitú,Amargosa+BA&zoom=15&maptype=${mapStyle}`;
-
   return (
     <div className="relative h-[400px] rounded-xl overflow-hidden">
       <iframe
-        src={mapUrl}
-        className="w-full h-full border-0"
+        src={`https://www.google.com/maps/embed/v1/place?key=${
+          import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+        }&q=Posto+Catitú,Amargosa+BA&zoom=15&maptype=roadmap${
+          theme === "dark"
+            ? "&style=feature:all|element:all|invert_lightness:true|hue:0x00ffff"
+            : ""
+        }`}
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Localização do Posto Catitú"
-        allowFullScreen
       />
       <a
         href={`https://www.google.com/maps/dir/?api=1&destination=${postoLocation.lat},${postoLocation.lng}`}
