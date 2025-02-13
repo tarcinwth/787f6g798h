@@ -70,19 +70,19 @@ export function ServicesSection() {
             Nossos Serviços
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white/50 backdrop-blur p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#91A1FA]/20 hover:border-[#91A1FA]/50 hover:-translate-y-1"
+                className="group relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center"
               >
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="flex items-center justify-center mb-4 w-16 h-16 rounded-full bg-[#FAF9F9] shadow-md">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
                   {service.title}
                 </h3>
                 <p className="text-gray-600">{service.desc}</p>

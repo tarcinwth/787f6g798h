@@ -27,19 +27,17 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-lg"
-          : "bg-black/30 backdrop-blur-sm"
+        isScrolled ? "bg-transparent backdrop-blur-sm" : "bg-white/95 shadow-lg"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between h-16">
           <motion.a
             href="#"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`text-2xl font-bold ${
-              isScrolled ? "text-[#7901FA]" : "text-white"
+            className={`text-3xl font-bold transition-colors duration-300 ${
+              isScrolled ? "text-[#7901FA]" : "text-[#7901FA]"
             }`}
           >
             Posto Catitú
@@ -55,7 +53,7 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={`font-medium hover:text-[#FA4534] transition-colors ${
-                  isScrolled ? "text-gray-700" : "text-white"
+                  isScrolled ? "text-gray-700" : "text-gray-700"
                 }`}
               >
                 {item.label}

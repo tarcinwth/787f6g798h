@@ -47,12 +47,15 @@ export function HeroSection({ images }: HeroSectionProps) {
   return (
     <section className="relative h-screen overflow-hidden">
       <div className="absolute inset-0">
-        <img
-          src={images[currentImageIndex]}
-          alt={`Banner ${currentImageIndex + 1}`}
-          className="w-full h-full object-cover"
-          style={{ opacity: isLoading ? 0 : 1 }}
-        />
+        <div className="relative">
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <img
+            src={images[currentImageIndex]}
+            alt={`Banner ${currentImageIndex + 1}`}
+            className="w-full h-full object-cover"
+            style={{ opacity: isLoading ? 0 : 1 }}
+          />
+        </div>
       </div>
 
       <AnimatePresence initial={false}>
@@ -64,11 +67,14 @@ export function HeroSection({ images }: HeroSectionProps) {
           transition={{ duration: 0.3 }}
           className="absolute inset-0"
         >
-          <img
-            src={images[currentImageIndex]}
-            alt={`Banner ${currentImageIndex + 1}`}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative">
+            <div className="absolute inset-0 bg-black opacity-30"></div>
+            <img
+              src={images[currentImageIndex]}
+              alt={`Banner ${currentImageIndex + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
         </motion.div>
       </AnimatePresence>
@@ -79,7 +85,7 @@ export function HeroSection({ images }: HeroSectionProps) {
         className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
       >
         <h1 className="text-4xl md:text-6xl font-bold mb-2">Posto Catitú</h1>
-        <h2 className="text-2xl md:text-4xl text-[#FAB432] font-semibold mb-4">
+        <h2 className="text-2xl md:text-4xl text-[#7901FA] font-semibold mb-4">
           Combustível de Qualidade 24h
         </h2>
         <p className="text-xl md:text-2xl mb-8">

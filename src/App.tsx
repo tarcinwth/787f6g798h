@@ -7,7 +7,6 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Header } from "./components/Header";
 import { LoadingSpinner } from "./components/LoadingSpinner";
-import { FuelPrices } from "./components/FuelPrices";
 import { NewsletterForm } from "./components/NewsletterForm";
 
 export default function App() {
@@ -59,15 +58,6 @@ export default function App() {
       <Header />
       <main className="pt-16">
         <HeroSection images={images} />
-
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] mb-8">
-              Preços Atualizados
-            </h2>
-            <FuelPrices />
-          </div>
-        </section>
 
         <ServicesSection services={services} />
         <AboutSection imagemSobre="/images/sobre.jpeg" />

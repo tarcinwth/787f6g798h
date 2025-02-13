@@ -15,16 +15,16 @@ export function ContactSection() {
 
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6 text-[#FA4534]" />,
+      icon: <Phone className="w-6 h-6 text-[#7901FA]" />,
       title: "Telefone",
       info: "(75) 99204-1400",
-      bgColor: "bg-[#FA4534]/10",
+      bgColor: "bg-[#7901FA]/10",
     },
     {
-      icon: <Mail className="w-6 h-6 text-[#FAB432]" />,
+      icon: <Mail className="w-6 h-6 text-[#7901FA]" />,
       title: "Email",
       info: "postocatitu@gmail.com",
-      bgColor: "bg-[#FAB432]/10",
+      bgColor: "bg-[#7901FA]/10",
     },
     {
       icon: <MapPin className="w-6 h-6 text-[#7901FA]" />,
@@ -33,22 +33,22 @@ export function ContactSection() {
       bgColor: "bg-[#7901FA]/10",
     },
     {
-      icon: <Clock className="w-6 h-6 text-[#FA78D9]" />,
+      icon: <Clock className="w-6 h-6 text-[#7901FA]" />,
       title: "Horário",
       info: "24 horas - Todos os dias",
-      bgColor: "bg-[#FA78D9]/10",
+      bgColor: "bg-[#7901FA]/10",
     },
     {
-      icon: <Building2 className="w-6 h-6 text-[#FA4534]" />,
+      icon: <Building2 className="w-6 h-6 text-[#7901FA]" />,
       title: "CNPJ",
       info: "33.880.610/0001-86",
-      bgColor: "bg-[#FA4534]/10",
+      bgColor: "bg-[#7901FA]/10",
     },
     {
-      icon: <CreditCard className="w-6 h-6 text-[#FAB432]" />,
+      icon: <CreditCard className="w-6 h-6 text-[#7901FA]" />,
       title: "Formas de Pagamento",
       info: "Dinheiro, Cartões e PIX",
-      bgColor: "bg-[#FAB432]/10",
+      bgColor: "bg-[#7901FA]/10",
     },
   ];
 
@@ -64,7 +64,7 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-center font-['Montserrat'] text-3xl md:text-4xl font-bold text-[#7901FA] mb-12">
+          <h2 className="text-center font-['Montserrat'] text-5xl md:text-5xl font-bold text-[#7901FA] mb-12">
             Entre em Contato
           </h2>
 
@@ -75,13 +75,15 @@ export function ContactSection() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md border border-[#91A1FA]/20 hover:shadow-lg hover:border-[#91A1FA]/50 transition-all duration-300 hover:-translate-y-0.5"
+                  className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-lg border border-[#E0E0E0] hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1"
                 >
-                  <div className={`${item.bgColor} p-3 rounded-full`}>
+                  <div
+                    className={`${item.bgColor} p-4 rounded-full shadow-md transition-transform duration-300 transform hover:scale-110`}
+                  >
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800">
+                    <h3 className="font-semibold text-gray-800 text-lg">
                       {item.title}
                     </h3>
                     <p className="text-gray-600">{item.info}</p>
@@ -90,7 +92,7 @@ export function ContactSection() {
               ))}
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
               <InteractiveMap />
             </div>
           </div>
