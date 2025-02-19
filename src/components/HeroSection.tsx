@@ -66,7 +66,7 @@ export function HeroSection({ images }: HeroSectionProps) {
           className="absolute inset-0 flex flex-col items-center justify-center text-center text-white"
         >
           <h1 className="text-3xl md:text-5xl font-bold mb-2">Posto Catitú</h1>
-          <h2 className="text-xl md:text-3xl text-[#7901FA] font-semibold mb-4">
+          <h2 className="text-xl md:text-3xl text-[#FA4534] font-semibold mb-4">
             Combustível de Qualidade 24h
           </h2>
           <p className="text-lg md:text-xl mb-8">

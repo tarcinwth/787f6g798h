@@ -57,9 +57,9 @@ function FooterAbout() {
 function FooterLinks() {
   const links = [
     { href: "#", text: "Início" },
-    { href: "#", text: "Serviços" },
-    { href: "#", text: "Sobre Nós" },
-    { href: "#", text: "Contato" },
+    { href: "#services", text: "Serviços" },
+    { href: "#about", text: "Sobre Nós" },
+    { href: "##contact", text: "Contato" },
   ];
 
   return (

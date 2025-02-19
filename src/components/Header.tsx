@@ -32,6 +32,7 @@ export function Header() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between h-16">
+          {/* Logo da Empresa */}
           <motion.a
             href="#"
             initial={{ opacity: 0, x: -20 }}
@@ -40,7 +41,11 @@ export function Header() {
               isScrolled ? "text-[#7901FA]" : "text-[#7901FA]"
             }`}
           >
-            Posto Catitú
+            <img
+              src="/images/favicon - Copia.png"
+              alt="Logo da Empresa"
+              className="h-12"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -67,9 +72,9 @@ export function Header() {
             className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
             {isMobileMenuOpen ? (
-              <X className={isScrolled ? "text-gray-700" : "text-white"} />
+              <X className={isScrolled ? "text-gray-700" : "text-gray-700"} />
             ) : (
-              <Menu className={isScrolled ? "text-gray-700" : "text-white"} />
+              <Menu className={isScrolled ? "text-gray-700" : "text-gray-700"} />
             )}
           </button>
         </div>
